@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Keuangan Sekolah - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/salieeem/school-finance-dashboard@master/style.css">
+    <?!= include('Stylecss'); ?>
+    <?!= include('JavaScript'); ?>
+</head>
+<body>
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <div class="nav-item active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" data-page="siswa">
+            <i class="fas fa-users"></i>
+            <span>Data</span>
+        </div>
+        <div class="nav-item" data-page="pemasukan">
+            <i class="fas fa-arrow-up"></i>
+            <span>Pemasukan</span>
+        </div>
+        <div class="nav-item" data-page="pengeluaran">
+            <i class="fas fa-arrow-down"></i>
+            <span>Pengeluaran</span>
+        </div>
+        <div class="nav-item" data-page="laporan">
+            <i class="fas fa-chart-bar"></i>
+            <span>Laporan</span>
+        </div>
+        <div class="nav-item" data-page="profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </div>
+    </div>
+
+    <!-- Desktop Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Sistem Keuangan Sekolah</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-page="home">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-link" data-page="siswa">
+                <i class="fas fa-users"></i>
+                <span>Data Keuangan</span>
+            </a>
+            <a href="#" class="nav-link" data-page="pemasukan">
+                <i class="fas fa-arrow-up"></i>
+                <span>Pemasukan</span>
+            </a>
+            <a href="#" class="nav-link" data-page="pengeluaran">
+                <i class="fas fa-arrow-down"></i>
+                <span>Pengeluaran</span>
+            </a>
+            <a href="#" class="nav-link" data-page="laporan">
+                <i class="fas fa-chart-bar"></i>
+                <span>Laporan</span>
+            </a>
+            <a href="#" class="nav-link" data-page="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="page-title">Dashboard Keuangan Sekolah</h1>
+                <div class="header-actions">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">0</span>
+                    </div>
+                    <div class="user-info">
+                        <img src="https://drive.google.com/uc?export=view&id=1ByuhIa5aOrCEG9PNEZATuf2oo2eb3_yo" alt="User Avatar" class="user-avatar">
+                        <span class="user-name">Admin</span>
+                    </div>
+                    <a href="<?= myURL(); ?>" class="btn btn-outline-danger">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="page-content">
+            <!-- Home Page -->
+            <div class="page" id="home-page">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon pemasukan">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Pemasukan</h3>
+                            <p class="stat-value" id="total-pemasukan">Rp 0</p>
+                            <small>Data keuangan sekolah</small>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon pengeluaran">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Pengeluaran</h3>
+                            <p class="stat-value" id="total-pengeluaran">Rp 0</p>
+                            <small>Data keuangan sekolah</small>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon siswa">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Data</h3>
+                            <p class="stat-value" id="total-data">0</p>
+                            <small>Jumlah data terdaftar</small>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon saldo">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Saldo Tersedia</h3>
+                            <p class="stat-value" id="saldo-tersedia">Rp 0</p>
+                            <small>Status: Sehat</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-section">
+                    <div class="chart-card">
+                        <h3>Grafik Keuangan</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Grafik keuangan akan ditampilkan di sini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Keuangan Page -->
+            <div class="page hidden" id="siswa-page">
+                <div class="page-header">
+                    <h2>Data Keuangan</h2>
+                    <div class="header-actions-group">
+                        <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#filter-menu">
+                            <i class="fas fa-filter"></i>
+                            Filter Data
+                        </button>
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-download"></i>
+                                Download
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" id="excel"><i class="fa-regular fa-file-excel"></i> Excel</a></li>
+                                <li><a class="dropdown-item" id="pdf"><i class="fa-regular fa-file-pdf"></i> PDF</a></li>
+                                <li><a class="dropdown-item" id="copy"><i class="fa-regular fa-copy"></i> Copy</a></li>
+                                <li><a class="dropdown-item" id="csv"><i class="fa-solid fa-file-csv"></i> CSV</a></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <i class="fas fa-plus"></i>
+                            Tambah Data
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Modal Form -->
+                <div class="modal" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5>Form Input-Edit Data</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="clearForm();"></button>
+                            </div>
+                            <div class="modal-body">
+                                <?!= include('Form'); ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" form="myForm">Submit</button>
+                                <button type="reset" class="btn btn-secondary" value="Reset" form="myForm">Reset</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="backhideCol0()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DataTable -->
+                <div class="container-fluid">
+                    <?!= include('DataTable'); ?>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <?!= include('SpinnerModal'); ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/gh/salieeem/school-finance-dashboard@master/script.js"></script>
+    
+    <script>
+        // Initialize page navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for template JS to load
+            setTimeout(function() {
+                const navLinks = document.querySelectorAll('.nav-link, .nav-item');
+                const pages = document.querySelectorAll('.page');
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetPage = this.getAttribute('data-page');
+                        
+                        // Remove active class from all nav items
+                        navLinks.forEach(nav => nav.classList.remove('active'));
+                        
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                        
+                        // Hide all pages
+                        pages.forEach(page => page.classList.add('hidden'));
+                        
+                        // Show target page
+                        const targetPageElement = document.getElementById(targetPage + '-page');
+                        if (targetPageElement) {
+                            targetPageElement.classList.remove('hidden');
+                        }
+                    });
+                });
+            }, 1000);
+        });
+        
+        // Custom function to refresh admin
+        function refreshAdmin(newHtml) {
+            refreshApp(newHtml);
+        }
+    </script>
+</body>
+</html>
