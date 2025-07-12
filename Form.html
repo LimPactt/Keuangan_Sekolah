@@ -1,75 +1,126 @@
-	<div class="card">
-		<div class="card-header">Data Registrasi</div>
-		<div class="card-body">
+<div id="message"></div>
 
-			<form id="myForm" onsubmit="handleFormSubmit(this)">
-				<div id="message"></div>
-				<input type="text" id="RecId" name="RecId" value="ID" style="display: none">
+<form id="myForm" onsubmit="handleFormSubmit(this)">
+    <input type="text" id="RecId" name="RecId" value="ID" style="display: none">
 
-				<!-- Input type text -->
-				<div class="form-group">
-					<label for="nama">Nama</label>
-					<input type="text" class="form-control" name="nama" id="nama" required>
-				</div>
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <i class="fas fa-user-plus me-2"></i>Data Registrasi Santri
+        </div>
+        <div class="card-body">
+            <!-- Nama Lengkap dan Nama Panggilan -->
+            <div class="form-group mb-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="nama" class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-control" name="nama" id="nama" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="namaPanggilan" class="form-label">Nama Panggilan</label>
+                        <input type="text" class="form-control" name="namaPanggilan" id="namaPanggilan" required>
+                    </div>
+                </div>
+            </div>
 
-				<!-- Input text grid -->
-				<div class="form-group">
-					<div class="row">
-						<div class="col">
-							<label>Email</label>
-							<input type="email" name="email" id="email" class="form-control" required>
-						</div>
-						<div class="col">
-							<label>Telp</label>
-							<input type="number" name="telp" id="telp" class="form-control" required>
-						</div>
-					</div>
-				</div>
+            <!-- Kelompok dan Status -->
+            <div class="form-group mb-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="kelompok" class="form-label">Kelompok</label>
+                        <select class="form-select" name="kelompok" id="kelompok" required>
+                            <option selected disabled hidden value="">Pilih Kelompok</option>
+                            <option value="A">Kelompok A</option>
+                            <option value="B">Kelompok B</option>
+                            <option value="C">Kelompok C</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" name="status" id="status" required>
+                            <option selected disabled hidden value="">Pilih Status</option>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Tidak Aktif">Tidak Aktif</option>
+                            <option value="Cuti">Cuti</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-				<!-- Input text grid -->
-				<div class="form-group">
-					<div class="row">
-						<div class="col">
-							<label>Gender</label>
-							<select class="form-select" name="gender" id="gender" required>
-								<option selected disabled hidden style='display: none' value=''></option>
-								<option value="Laki-Laki">Laki-Laki</option>
-								<option value="Perempuan">Perempuan</option>
-							</select>
-						</div>
-						<div class="col">
-							<label>Tanggal Lahir</label>
-							<input type="text" class="form-control" name="tglLahir" id="tglLahir" placeholder="Tanggal" onfocus="(this.type = 'date')" required>
-						</div>
-					</div>
-				</div>
+            <!-- File Upload -->
+            <div class="form-group mb-3">
+                <label for="myFile1" class="form-label">Upload Dokumen</label>
+                <input type="file" class="form-control" name="myFile1" id="myFile1" 
+                       accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+                <div class="form-text">Format yang didukung: PDF, DOC, DOCX, JPG, JPEG, PNG</div>
+            </div>
+        </div>
+    </div>
+</form>
 
+<!-- Styling tambahan -->
+<style>
+#message {
+    margin-bottom: 1rem;
+}
 
-				<!-- Input text grid -->
-				<div class="form-group">
-					<div class="row">
-						<div class="col">
-							<label>Kota</label>
-							<select class="form-select" name="kota" id="kota" required>
-								<option selected disabled hidden style='display: none' value=''></option>
-							</select>
-						</div>
-					</div>
-				</div>
+.card {
+    margin-bottom: 0;
+}
 
-				<!-- Input type text -->
-				<div class="form-group">
-					<label for="file1">File 1</label>
-					<input type="file" class="form-control" name="myFile1" id="myFile2">
-				</div>      
+.card-header {
+    padding: 1rem 1.5rem;
+    background-color: var(--bs-primary) !important;
+}
 
-				<!-- Input type text -->
-				<div class="form-group">
-					<label for="file2">File 2</label>
-					<input type="file" class="form-control" name="myFile2" id="myFile2">
-				</div>  
+.card-body {
+    padding: 1.5rem;
+}
 
-			</form>
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #344767;
+}
 
-		</div>
-	</div>
+.form-control, .form-select {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.15rem rgba(13,110,253,.15);
+}
+
+.form-control:hover, .form-select:hover {
+    border-color: #86b7fe;
+}
+
+.form-text {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07),0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+    padding: 1rem 1.5rem;
+}
+</style>

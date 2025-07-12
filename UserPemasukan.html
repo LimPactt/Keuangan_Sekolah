@@ -4,7 +4,7 @@
     <base target="_top">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Keuangan Sekolah - User</title>
+    <title>Dashboard Keuangan Sekolah - Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/salieeem/school-finance-dashboard@master/style.css">
@@ -21,6 +21,14 @@
         <div class="nav-item" data-page="siswa">
             <i class="fas fa-users"></i>
             <span>Data</span>
+        </div>
+        <div class="nav-item" data-page="pemasukan">
+            <i class="fas fa-arrow-up"></i>
+            <span>Pemasukan</span>
+        </div>
+        <div class="nav-item" data-page="pengeluaran">
+            <i class="fas fa-arrow-down"></i>
+            <span>Pengeluaran</span>
         </div>
         <div class="nav-item" data-page="laporan">
             <i class="fas fa-chart-bar"></i>
@@ -46,8 +54,16 @@
                 <span>Dashboard</span>
             </a>
             <a href="#" class="nav-link" data-page="siswa">
-                <i class="fas fa-users"></i>
-                <span>Data Keuangan</span>
+                <i class="fas fa-user-graduate"></i>
+                <span>Data Santri</span>
+            </a>
+            <a href="#" class="nav-link" data-page="pemasukan">
+                <i class="fas fa-arrow-up"></i>
+                <span>Pemasukan</span>
+            </a>
+            <a href="#" class="nav-link" data-page="pengeluaran">
+                <i class="fas fa-arrow-down"></i>
+                <span>Pengeluaran</span>
             </a>
             <a href="#" class="nav-link" data-page="laporan">
                 <i class="fas fa-chart-bar"></i>
@@ -67,13 +83,9 @@
             <div class="header-content">
                 <h1 class="page-title">Dashboard Keuangan Sekolah</h1>
                 <div class="header-actions">
-                    <div class="notification-icon">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge">0</span>
-                    </div>
                     <div class="user-info">
                         <img src="https://drive.google.com/uc?export=view&id=1ByuhIa5aOrCEG9PNEZATuf2oo2eb3_yo" alt="User Avatar" class="user-avatar">
-                        <span class="user-name">User</span>
+                        <span class="user-name">Admin</span>
                     </div>
                     <a href="<?= myURL(); ?>" class="btn btn-outline-danger">
                         <i class="fas fa-sign-out-alt"></i> Logout
@@ -94,7 +106,7 @@
                         <div class="stat-content">
                             <h3>Total Pemasukan</h3>
                             <p class="stat-value" id="total-pemasukan">Rp 0</p>
-                            <small>Data keuangan sekolah</small>
+                            <small>Data Siswa sekolah</small>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -104,7 +116,7 @@
                         <div class="stat-content">
                             <h3>Total Pengeluaran</h3>
                             <p class="stat-value" id="total-pengeluaran">Rp 0</p>
-                            <small>Data keuangan sekolah</small>
+                            <small>Data Siswa sekolah</small>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -140,15 +152,24 @@
                 </div>
             </div>
 
-            <!-- Data Keuangan Page -->
+            <!-- Data Siswa Page -->
             <div class="page hidden" id="siswa-page">
                 <div class="page-header">
-                    <h2>Data Keuangan</h2>
+                    <h2>Data Siswa</h2>
                     <div class="header-actions-group">
-                        <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#filter-menu">
-                            <i class="fas fa-filter"></i>
-                            Filter Data
-                        </button>
+                                  
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-download"></i>
+                                Download
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" id="excel"><i class="fa-regular fa-file-excel"></i> Excel</a></li>
+                                <li><a class="dropdown-item" id="pdf"><i class="fa-regular fa-file-pdf"></i> PDF</a></li>
+                                <li><a class="dropdown-item" id="copy"><i class="fa-regular fa-copy"></i> Copy</a></li>
+                                <li><a class="dropdown-item" id="csv"><i class="fa-solid fa-file-csv"></i> CSV</a></li>
+                            </ul>
+                        </div>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                             <i class="fas fa-plus"></i>
                             Tambah Data
@@ -220,11 +241,10 @@
             }, 1000);
         });
         
-        // Custom function to refresh user
-        function refreshUser(newHtml) {
+        // Custom function to refresh admin
+        function refreshAdmin(newHtml) {
             refreshApp(newHtml);
         }
     </script>
 </body>
 </html>
-
